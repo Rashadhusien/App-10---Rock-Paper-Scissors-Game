@@ -56,8 +56,16 @@ body {
   margin-bottom: 10px;
 }
 
+.score-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
 .score {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #667eea;
 }
@@ -107,6 +115,23 @@ body {
   transform: scale(0.95);
 }
 
+.choice:disabled {
+  background: #e0e0e0;
+  border-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.choice:disabled:hover {
+  background: #e0e0e0;
+  transform: none;
+  color: #999;
+}
+.max-w-50 {
+  max-width: 50px;
+}
+
 .choice-icon {
   max-width: 50px;
 }
@@ -153,6 +178,10 @@ body {
   }
 
   .choice-icon {
+    max-width: 30px;
+  }
+
+  .max-w-50 {
     max-width: 30px;
   }
 }
