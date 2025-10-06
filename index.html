@@ -7,7 +7,9 @@
   <title>Rock Paper Scissors Game</title>
 </head>
 <body>
-  <div class="container">
+
+  <div class="container" id="game-container">
+    <button class="stats-btn" id="stats-btn">📊 Stats</button>
     <h1 class="title">Rock Paper Scissors</h1>
 
     <div class="score-board">
@@ -46,6 +48,35 @@
     </div>
 
     <button class="reset-btn" id="reset">Reset Game</button>
+  </div>
+
+  <div class="stats-panel" id="stats-panel">
+    <button class="close-stats-btn" id="close-stats-btn">✕</button>
+    <h2 class="stats-title">Game Statistics</h2>
+    <div class="stats-content">
+      <div class="stats-summary">
+        <div class="stat-box">
+          <h3>Total Games</h3>
+          <p id="total-games">0</p>
+        </div>
+        <div class="stat-box">
+          <h3>Wins</h3>
+          <p id="total-wins" class="win-stat">0</p>
+        </div>
+        <div class="stat-box">
+          <h3>Losses</h3>
+          <p id="total-losses" class="lose-stat">0</p>
+        </div>
+        <div class="stat-box">
+          <h3>Draws</h3>
+          <p id="total-draws" class="draw-stat">0</p>
+        </div>
+      </div>
+      <div class="stats-history">
+        <h3>Recent Games</h3>
+        <div id="history-list"></div>
+      </div>
+    </div>
   </div>
 
   <script src="main.js"></script>
