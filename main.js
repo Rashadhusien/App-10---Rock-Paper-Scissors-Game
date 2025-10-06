@@ -215,14 +215,18 @@ const gameContainer = document.getElementById('game-container');
 // Open stats panel
 statsBtn.addEventListener('click', () => {
   statsPanel.classList.add('show');
+  statsPanel.setAttribute('aria-hidden', 'false');
   gameContainer.classList.add('hide-left');
   updateStatsPanel();
+  closeStatsBtn.focus();
 });
 
 // Close stats panel
 closeStatsBtn.addEventListener('click', () => {
   statsPanel.classList.remove('show');
+  statsPanel.setAttribute('aria-hidden', 'true');
   gameContainer.classList.remove('hide-left');
+  statsBtn.focus();
 });
 
 // Update stats panel with game data
@@ -258,6 +262,7 @@ function updateStatsPanel() {
   recentGames.forEach(game => {
     const historyItem = document.createElement('div');
     historyItem.classList.add('history-item', game.result);
+    historyItem.setAttribute('role', 'listitem');
 
     const choiceDiv = document.createElement('div');
     choiceDiv.classList.add('history-choice');
