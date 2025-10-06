@@ -95,10 +95,11 @@ body {
   transform: translateY(-5px);
 }
 
-.score-item h3 {
+.score-item h2 {
   color: #555;
   font-size: 1.2rem;
   margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .score-data {
@@ -510,7 +511,7 @@ body {
     padding: 15px;
   }
 
-  .score-item h3 {
+  .score-item h2 {
     font-size: 1rem;
   }
 
@@ -637,7 +638,7 @@ body {
     padding: 12px;
   }
 
-  .score-item h3 {
+  .score-item h2 {
     font-size: 0.9rem;
   }
 

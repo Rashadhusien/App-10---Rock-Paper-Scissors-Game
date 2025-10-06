@@ -3,8 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Play Rock Paper Scissors online! Fun and interactive game with score tracking and game statistics. Challenge the computer and see your win rate!"
+    />
     <link rel="stylesheet" href="style.css" />
-    <title>Rock Paper Scissors Game</title>
+    <title>Rock Paper Scissors Game - Play Online Free</title>
   </head>
   <body>
     <!-- ============================================ -->
@@ -12,7 +16,9 @@
     <!-- ============================================ -->
     <div class="container" id="game-container">
       <!-- Stats Button -->
-      <button class="stats-btn" id="stats-btn">📊 Stats</button>
+      <button class="stats-btn" id="stats-btn" aria-label="View game statistics">
+        📊 Stats
+      </button>
 
       <!-- Game Title -->
       <h1 class="title">Rock Paper Scissors</h1>
@@ -24,22 +30,32 @@
         <!-- Player Score -->
         <div class="score-item">
           <div class="score-data">
-            <h3>You</h3>
-            <span class="score" id="player-score">0</span>
+            <h2>You</h2>
+            <span class="score" id="player-score" aria-live="polite">0</span>
           </div>
           <div class="choiced" id="user-choice">
-            <img class="random max-w-50" src="images/choose.png" alt="random" />
+            <img
+              class="random max-w-50"
+              src="images/choose.png"
+              alt="Player choice placeholder"
+              loading="lazy"
+            />
           </div>
         </div>
 
         <!-- Computer Score -->
         <div class="score-item">
           <div class="score-data">
-            <h3>computer</h3>
-            <span class="score" id="computer-score">0</span>
+            <h2>Computer</h2>
+            <span class="score" id="computer-score" aria-live="polite">0</span>
           </div>
           <div class="choiced" id="computer-choice">
-            <img class="random max-w-50" src="images/random.png" alt="random" />
+            <img
+              class="random max-w-50"
+              src="images/random.png"
+              alt="Computer choice placeholder"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -47,67 +63,99 @@
       <!-- ============================================ -->
       <!-- RESULT DISPLAY -->
       <!-- ============================================ -->
-      <div class="result">
+      <div class="result" role="status" aria-live="assertive">
         <p id="result-text">Choose your weapon!</p>
       </div>
 
       <!-- ============================================ -->
       <!-- CHOICE BUTTONS -->
       <!-- ============================================ -->
-      <div class="choices">
-        <button class="choice" id="rock">
-          <img class="choice-icon" src="images/rock.png" alt="rock" />
+      <div class="choices" role="group" aria-label="Game choices">
+        <button class="choice" id="rock" aria-label="Choose rock">
+          <img
+            class="choice-icon"
+            src="images/rock.png"
+            alt=""
+            loading="lazy"
+            aria-hidden="true"
+          />
           <span class="choice-text">Rock</span>
         </button>
-        <button class="choice" id="paper">
-          <img class="choice-icon" src="images/paper.png" alt="paper" />
+        <button class="choice" id="paper" aria-label="Choose paper">
+          <img
+            class="choice-icon"
+            src="images/paper.png"
+            alt=""
+            loading="lazy"
+            aria-hidden="true"
+          />
           <span class="choice-text">Paper</span>
         </button>
-        <button class="choice" id="scissors">
-          <img class="choice-icon" src="images/scissors.png" alt="scissors" />
+        <button class="choice" id="scissors" aria-label="Choose scissors">
+          <img
+            class="choice-icon"
+            src="images/scissors.png"
+            alt=""
+            loading="lazy"
+            aria-hidden="true"
+          />
           <span class="choice-text">Scissors</span>
         </button>
       </div>
 
       <!-- Reset Button -->
-      <button class="reset-btn" id="reset">Reset Game</button>
+      <button class="reset-btn" id="reset" aria-label="Reset game and clear scores">
+        Reset Game
+      </button>
     </div>
 
     <!-- ============================================ -->
     <!-- STATS PANEL (SIDEBAR) -->
     <!-- ============================================ -->
-    <div class="stats-panel" id="stats-panel">
+    <div
+      class="stats-panel"
+      id="stats-panel"
+      role="dialog"
+      aria-labelledby="stats-title"
+      aria-hidden="true"
+    >
       <!-- Close Button -->
-      <button class="close-stats-btn" id="close-stats-btn">✕</button>
+      <button
+        class="close-stats-btn"
+        id="close-stats-btn"
+        aria-label="Close statistics panel"
+      >
+        ✕
+      </button>
 
       <!-- Stats Title -->
-      <h2 class="stats-title">Game Statistics</h2>
+      <h2 class="stats-title" id="stats-title">Game Statistics</h2>
 
       <div class="stats-content">
         <!-- Stats Summary -->
-        <div class="stats-summary">
+        <div class="stats-summary" role="region" aria-label="Statistics summary">
           <div class="stat-box">
             <h3>Total Games</h3>
-            <p id="total-games">0</p>
+            <p id="total-games" aria-live="polite">0</p>
           </div>
           <div class="stat-box">
             <h3>Wins</h3>
-            <p id="total-wins" class="win-stat">0</p>
+            <p id="total-wins" class="win-stat" aria-live="polite">0</p>
           </div>
           <div class="stat-box">
             <h3>Losses</h3>
-            <p id="total-losses" class="lose-stat">0</p>
+            <p id="total-losses" class="lose-stat" aria-live="polite">0</p>
           </div>
           <div class="stat-box">
             <h3>Draws</h3>
-            <p id="total-draws" class="draw-stat">0</p>
+            <p id="total-draws" class="draw-stat" aria-live="polite">0</p>
           </div>
         </div>
 
         <!-- Game History -->
         <div class="stats-history">
           <h3>Recent Games</h3>
-          <div id="history-list"></div>
+          <div id="history-list" role="list" aria-label="Game history"></div>
         </div>
       </div>
     </div>
