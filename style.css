@@ -1,3 +1,6 @@
+/* ============================================ */
+/* GLOBAL STYLES */
+/* ============================================ */
 * {
   margin: 0;
   padding: 0;
@@ -15,6 +18,9 @@ body {
   overflow-x: hidden;
 }
 
+/* ============================================ */
+/* MAIN CONTAINER */
+/* ============================================ */
 .container {
   position: relative;
   background: white;
@@ -27,6 +33,23 @@ body {
   transition: transform 0.5s ease;
 }
 
+.container.hide-left {
+  transform: translateX(-120%);
+}
+
+/* ============================================ */
+/* TITLE */
+/* ============================================ */
+.title {
+  color: #667eea;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* ============================================ */
+/* STATS BUTTON */
+/* ============================================ */
 .stats-btn {
   position: absolute;
   top: 20px;
@@ -50,17 +73,9 @@ body {
   background: #764ba2;
 }
 
-.container.hide-left {
-  transform: translateX(-120%);
-}
-
-.title {
-  color: #667eea;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  font-weight: 700;
-}
-
+/* ============================================ */
+/* SCORE BOARD */
+/* ============================================ */
 .score-board {
   display: flex;
   justify-content: space-around;
@@ -92,14 +107,15 @@ body {
   align-items: center;
 }
 
-
-
 .score {
   font-size: 2rem;
   font-weight: 700;
   color: #667eea;
 }
 
+/* ============================================ */
+/* RESULT DISPLAY */
+/* ============================================ */
 .result {
   background: #f0f0f0;
   padding: 20px;
@@ -115,6 +131,7 @@ body {
   transition: all 0.3s ease;
 }
 
+/* Result States */
 .result.win {
   background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
   animation: winPulse 0.6s ease;
@@ -149,31 +166,67 @@ body {
   font-size: 1.8rem;
 }
 
+/* ============================================ */
+/* ANIMATIONS */
+/* ============================================ */
 @keyframes winPulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes winScale {
-  0% { transform: scale(0.5); opacity: 0; }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-10px) rotate(-2deg); }
-  75% { transform: translateX(10px) rotate(2deg); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px) rotate(-2deg);
+  }
+  75% {
+    transform: translateX(10px) rotate(2deg);
+  }
 }
 
 @keyframes drawBounce {
-  0%, 100% { transform: translateY(0); }
-  25% { transform: translateY(-10px); }
-  50% { transform: translateY(0); }
-  75% { transform: translateY(-5px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
 }
 
+/* ============================================ */
+/* CHOICE BUTTONS */
+/* ============================================ */
 .choices {
   display: flex;
   justify-content: center;
@@ -219,9 +272,6 @@ body {
   transform: none;
   color: #999;
 }
-.max-w-50 {
-  max-width: 50px;
-}
 
 .choice-icon {
   max-width: 50px;
@@ -232,6 +282,13 @@ body {
   font-weight: 600;
 }
 
+.max-w-50 {
+  max-width: 50px;
+}
+
+/* ============================================ */
+/* RESET BUTTON */
+/* ============================================ */
 .reset-btn {
   background: #764ba2;
   color: white;
@@ -254,6 +311,9 @@ body {
   transform: translateY(0);
 }
 
+/* ============================================ */
+/* STATS PANEL (SIDEBAR) */
+/* ============================================ */
 .stats-panel {
   position: fixed;
   top: 0;
@@ -273,6 +333,7 @@ body {
   right: 0;
 }
 
+/* Close Button */
 .close-stats-btn {
   position: absolute;
   top: 20px;
@@ -296,6 +357,7 @@ body {
   transform: rotate(90deg);
 }
 
+/* Stats Title */
 .stats-title {
   color: #667eea;
   font-size: 2rem;
@@ -303,6 +365,7 @@ body {
   text-align: center;
 }
 
+/* Stats Summary Grid */
 .stats-summary {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -330,6 +393,7 @@ body {
   color: #667eea;
 }
 
+/* Stat Colors */
 .win-stat {
   color: #11998e !important;
 }
@@ -342,6 +406,7 @@ body {
   color: #f093fb !important;
 }
 
+/* Stats History */
 .stats-history {
   margin-top: 30px;
 }
@@ -358,6 +423,7 @@ body {
   overflow-y: auto;
 }
 
+/* History Items */
 .history-item {
   background: #f7f7f7;
   padding: 15px;
@@ -410,7 +476,9 @@ body {
   color: white;
 }
 
-/* Tablet and below */
+/* ============================================ */
+/* RESPONSIVE DESIGN - TABLET */
+/* ============================================ */
 @media (max-width: 768px) {
   body {
     padding: 10px;
@@ -532,7 +600,9 @@ body {
   }
 }
 
-/* Mobile phones */
+/* ============================================ */
+/* RESPONSIVE DESIGN - MOBILE */
+/* ============================================ */
 @media (max-width: 480px) {
   body {
     padding: 5px;
@@ -682,20 +752,38 @@ body {
 
   /* Adjust animations for mobile */
   @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px) rotate(-1deg); }
-    75% { transform: translateX(5px) rotate(1deg); }
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px) rotate(-1deg);
+    }
+    75% {
+      transform: translateX(5px) rotate(1deg);
+    }
   }
 
   @keyframes drawBounce {
-    0%, 100% { transform: translateY(0); }
-    25% { transform: translateY(-5px); }
-    50% { transform: translateY(0); }
-    75% { transform: translateY(-3px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-5px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    75% {
+      transform: translateY(-3px);
+    }
   }
 }
 
-/* Very small screens */
+/* ============================================ */
+/* RESPONSIVE DESIGN - VERY SMALL SCREENS */
+/* ============================================ */
 @media (max-width: 360px) {
   .container {
     padding: 15px 10px;
