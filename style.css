@@ -75,12 +75,73 @@ body {
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 30px;
+  transition: all 0.5s ease;
 }
 
 .result p {
   font-size: 1.3rem;
   color: #333;
   font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.result.win {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  animation: winPulse 0.6s ease;
+  box-shadow: 0 0 30px rgba(56, 239, 125, 0.6);
+}
+
+.result.win p {
+  color: white;
+  font-size: 1.8rem;
+  animation: winScale 0.5s ease;
+}
+
+.result.lose {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  animation: shake 0.5s ease;
+  box-shadow: 0 0 30px rgba(235, 51, 73, 0.6);
+}
+
+.result.lose p {
+  color: white;
+  font-size: 1.8rem;
+}
+
+.result.draw {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  animation: drawBounce 0.6s ease;
+  box-shadow: 0 0 30px rgba(240, 147, 251, 0.6);
+}
+
+.result.draw p {
+  color: white;
+  font-size: 1.8rem;
+}
+
+@keyframes winPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes winScale {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px) rotate(-2deg); }
+  75% { transform: translateX(10px) rotate(2deg); }
+}
+
+@keyframes drawBounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-10px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-5px); }
 }
 
 .choices {

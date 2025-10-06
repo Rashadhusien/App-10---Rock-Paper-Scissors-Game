@@ -21,8 +21,13 @@ const computerScoreNumber =document.querySelector("#computer-score")
 
 const gameState = JSON.parse(localStorage.getItem('state')) || []
 
-let playerScore =Number( JSON.parse(localStorage.getItem('player-score'))) || 0
-let computerScore = Number(JSON.parse(localStorage.getItem('computer-score')) )|| 0
+// let playerScore =Number( JSON.parse(localStorage.getItem('player-score'))) || 0
+// let computerScore = Number(JSON.parse(localStorage.getItem('computer-score')) )|| 0
+
+const gameScore = JSON.parse(localStorage.getItem('score')) || {
+  player: 0,
+  computer: 0
+}
 
 
 console.log(gameState)
@@ -31,6 +36,10 @@ console.log(gameState)
 choiceButtons.forEach((btn) => {
   btn.addEventListener("click" , (e)=> {
     e.preventDefault()
+
+    const resultContainer = document.querySelector('.result')
+    resultContainer.classList.remove('win', 'lose', 'draw')
+
     choiceButtons.forEach((button) =>{
       button.disabled = true;
     })
@@ -38,7 +47,7 @@ choiceButtons.forEach((btn) => {
     chosenImage.src = btn.children[0].src
     chosenImage.alt = btn.children[0].alt
     chosenImage.classList.add("max-w-50")
-    
+
     userChoiceContainer.innerHTML = ''
 
       userChoiceContainer.appendChild(chosenImage)
@@ -47,10 +56,11 @@ choiceButtons.forEach((btn) => {
         player: '',
         computer: "",
         result: "",
-      
+
+
       }
       game.player =btn.id
- 
+
     computerChoise(game)
   })
 })
@@ -114,38 +124,44 @@ function gameResult(game) {
   if (gameState.length > 50) gameState.shift()
   localStorage.setItem('state', JSON.stringify(gameState))
 
+  const resultContainer = document.querySelector('.result')
+
+  resultContainer.classList.remove('win', 'lose', 'draw')
+
   if (game.result === CONFIG.win) {
-    resultText.textContent = 'You Win!'
+    resultText.textContent = '🎉 You Win! 🎉'
+    resultContainer.classList.add('win')
   } else if (game.result === CONFIG.lose) {
-    resultText.textContent = 'You Lose!'
+    resultText.textContent = '💔 You Lose! 💔'
+    resultContainer.classList.add('lose')
   } else {
-    resultText.textContent = 'Draw!'
+    resultText.textContent = '🤝 Draw! 🤝'
+    resultContainer.classList.add('draw')
   }
 
 
-  // calculatePlayerAndComputerScore()
+  calculatePlayerAndComputerScore(game)
 
   choiceButtons.forEach(button => button.disabled = false)
 }
 
 
-// function calculatePlayerAndComputerScore() {
+function calculatePlayerAndComputerScore(game) {
 
-//   gameState.forEach((game) => {
-//     if (game.result === CONFIG.win) {
-//       playerScore++
-//       localStorage.setItem('player-score', JSON.stringify(playerScore))
-//     }else if (game.result === CONFIG.lose) {
-//       computerScore++
-//       localStorage.setItem('computer-score', JSON.stringify(computerScore))
-//     }
-//   })
+    if (game.result === CONFIG.win) {
+      gameScore.player++
+    }else if (game.result === CONFIG.lose) {
+      gameScore.computer++
+    }
+    
+    localStorage.setItem('score', JSON.stringify(gameScore))
 
-// }
-// calculatePlayerAndComputerScore()
+    updateScoreUI()
 
-// function updateScoreUI() {
-//   playerScoreNumber.textContent = playerScore
-//   computerScoreNumber.textContent = computerScore
-// }
-// updateScoreUI()
+}
+
+function updateScoreUI() {
+  playerScoreNumber.textContent = gameScore.player
+  computerScoreNumber.textContent = gameScore.computer
+}
+updateScoreUI()
